@@ -41,7 +41,7 @@ This package contains protobuf-c headers and libraries.
 
 %build
 
-%configure --disable-static
+#%configure --disable-static
 
 %make_build
 
@@ -70,4 +70,3 @@ find %{buildroot} -type f -name '*.la' -delete
 %{_libdir}/pkgconfig/lib%{name}.pc
 
 %changelog
-%autochangelog
