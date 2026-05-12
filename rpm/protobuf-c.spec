@@ -43,6 +43,8 @@ Buffers from pure C (not C++).
 %prep
 %autosetup -p1
 
+%autosetup -n %{name}-%{version}/**protobuf-c**
+
 %build
 %{!?make_build:%define make_build make -O %{?_smp_mflags} V=1 VERBOSE=1}
 
