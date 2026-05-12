@@ -32,12 +32,10 @@ Buffers from pure C (not C++).
 %package devel
 Summary:        protobuf generator and headers
 Group:          Development/Libraries/C and C++
-Requires:       libprotobuf-c%sover = %version
+Requires:       libprotobuf-c
 Recommends:     (protobuf-devel >= 2.6.0 with protobuf-devel < 22)
-Provides:       protobuf-c = %version-%release
-Obsoletes:      protobuf-c <= %version-%release
-Provides:       libprotobuf-c-devel = %version-%release
-Obsoletes:      libprotobuf-c-devel <= %version-%release
+Provides:       protobuf-c
+Provides:       libprotobuf-c-devel
 
 %description devel
 This package provides a code generator and runtime libraries to use Protocol
@@ -61,12 +59,12 @@ rm %buildroot/%_libdir/*.la
 %check
 make check
 
-%ldconfig_scriptlets -n libprotobuf-c%sover
+%ldconfig_scriptlets -n libprotobuf-c
 
-%files -n libprotobuf-c%sover
+%files -n libprotobuf-c
 %license LICENSE
-%_libdir/libprotobuf-c.so.%sover
-%_libdir/libprotobuf-c.so.%sover.*
+%_libdir/libprotobuf-c.so
+%_libdir/libprotobuf-c.so.*
 
 %files devel
 %license LICENSE
