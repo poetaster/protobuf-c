@@ -38,12 +38,10 @@ This package contains protobuf-c headers and libraries.
 
 %prep
 %autosetup -p1
-exec autoreconf -fvi
+
+%configure
 
 %build
-
-autogen.sh
-%configure --disable-static
 
 %make_build
 
