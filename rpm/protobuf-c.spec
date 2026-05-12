@@ -41,8 +41,7 @@ This package contains protobuf-c headers and libraries.
 
 %build
 
-./autogen.sh
-
+%{buildroot}/autogen.sh
 %configure --disable-static
 
 %make_build
