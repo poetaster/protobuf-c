@@ -39,9 +39,9 @@ This package contains protobuf-c headers and libraries.
 %prep
 %autosetup -p1
 
-%configure
-
 %build
+
+%configure
 
 %make_build
 
