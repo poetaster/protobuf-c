@@ -21,11 +21,11 @@ Buffers from pure C (not C++).
 
 It uses a modified version of protoc called protoc-c.
 
-%package -n libprotobuf-c%sover
+%package -n protobuf-c
 Summary:        C bindings for Google's Protocol Buffers
 Group:          System/Libraries
 
-%description -n libprotobuf-c%sover
+%description -n protobuf-c
 This package provides a code generator and runtime libraries to use Protocol
 Buffers from pure C (not C++).
 
@@ -35,7 +35,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libprotobuf-c
 Recommends:     (protobuf-devel >= 2.6.0 with protobuf-devel < 22)
 Provides:       protobuf-c
-Provides:       libprotobuf-c-devel
+Provides:       protobuf-c-devel
 
 %description devel
 This package provides a code generator and runtime libraries to use Protocol
