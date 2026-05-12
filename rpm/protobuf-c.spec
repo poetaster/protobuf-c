@@ -41,8 +41,6 @@ This package contains protobuf-c headers and libraries.
 
 %build
 
-#%configure --disable-static
-
 %make_build
 
 %check
