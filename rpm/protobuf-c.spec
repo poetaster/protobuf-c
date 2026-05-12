@@ -41,9 +41,8 @@ This package provides a code generator and runtime libraries to use Protocol
 Buffers from pure C (not C++).
 
 %prep
-%autosetup -p1
 
-%autosetup -n %{name}-%{version}/protobuf-c
+%autosetup -p1 -n %{name}-%{version}/protobuf-c
 
 %build
 %{!?make_build:%define make_build make -O %{?_smp_mflags} V=1 VERBOSE=1}
@@ -76,4 +75,5 @@ rm %buildroot/%_libdir/*.la
 %{_libdir}/pkgconfig/lib%{name}.pc
 %_bindir/protoc-c
 %_bindir/protoc-gen-c
+
 %changelog
