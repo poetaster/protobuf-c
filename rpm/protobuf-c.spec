@@ -74,5 +74,6 @@ rm %buildroot/%_libdir/*.la
 %{_includedir}/google/%{name}/
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/lib%{name}.pc
-
+%_bindir/protoc-c
+%_bindir/protoc-gen-c
 %changelog
