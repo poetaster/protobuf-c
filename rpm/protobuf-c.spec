@@ -24,7 +24,6 @@ It uses a modified version of protoc called protoc-c.
 %package compiler
 
 Summary:        Protocol Buffers C compiler
-
 Requires:       %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 
 %description compiler
@@ -33,12 +32,8 @@ compiler for the C programming language called protoc-c.
 
 %package devel
 Summary:        Protocol Buffers C headers and libraries
-Requires:       %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
-Requires:       %{name}-compiler%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 Provides:       protobuf-c = %version-%release
-Obsoletes:      protobuf-c <= %version-%release
 Provides:       libprotobuf-c-devel = %version-%release
-Obsoletes:      libprotobuf-c-devel <= %version-%release
 
 %description devel
 This package provides a code generator and runtime libraries to use Protocol
