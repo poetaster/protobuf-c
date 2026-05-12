@@ -45,7 +45,9 @@ Buffers from pure C (not C++).
 
 %build
 %{!?make_build:%define make_build make -O %{?_smp_mflags} V=1 VERBOSE=1}
-autoreconf -fvi
+
+##autoreconf -fvi
+
 %configure \
     --enable-static=no
 
