@@ -9,64 +9,75 @@ Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  glibc-devel
+BuildRequires:  libtool
 BuildRequires:  make
-BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig
+BuildRequires:  protobuf-devel
 
 %description
-Protocol Buffers are a way of encoding structured data in an efficient yet
-extensible format. This package provides a code generator and run-time
-libraries to use Protocol Buffers from pure C (not C++).
+This package provides a code generator and runtime libraries to use Protocol
+Buffers from pure C (not C++).
+
 It uses a modified version of protoc called protoc-c.
 
-%package compiler
+%package -n libprotobuf-c%sover
+Summary:        C bindings for Google's Protocol Buffers
+Group:          System/Libraries
 
-Summary:        Protocol Buffers C compiler
-
-Requires:       %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
-
-%description compiler
-This package contains a modified version of the Protocol Buffers
-compiler for the C programming language called protoc-c.
+%description -n libprotobuf-c%sover
+This package provides a code generator and runtime libraries to use Protocol
+Buffers from pure C (not C++).
 
 %package devel
-Summary:        Protocol Buffers C headers and libraries
-Requires:       %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
-Requires:       %{name}-compiler%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
+Summary:        protobuf generator and headers
+Group:          Development/Libraries/C and C++
+Requires:       libprotobuf-c%sover = %version
+Recommends:     (protobuf-devel >= 2.6.0 with protobuf-devel < 22)
+Provides:       protobuf-c = %version-%release
+Obsoletes:      protobuf-c <= %version-%release
+Provides:       libprotobuf-c-devel = %version-%release
+Obsoletes:      libprotobuf-c-devel <= %version-%release
 
 %description devel
-This package contains protobuf-c headers and libraries.
+This package provides a code generator and runtime libraries to use Protocol
+Buffers from pure C (not C++).
 
 %prep
 %autosetup -p1
 
 %build
-
-%configure
+%{!?make_build:%define make_build make -O %{?_smp_mflags} V=1 VERBOSE=1}
+autoreconf -fvi
+%configure \
+    --enable-static=no
 
 %make_build
+
+%install
+%make_install
+rm %buildroot/%_libdir/*.la
 
 %check
 make check
 
-%install
-%make_install
+%ldconfig_scriptlets -n libprotobuf-c%sover
 
-find %{buildroot} -type f -name '*.la' -delete
-
-%files
+%files -n libprotobuf-c%sover
 %license LICENSE
-%doc README.md TODO
-%{_libdir}/lib%{name}.so.%{sover}*
-
-%files compiler
-%{_bindir}/protoc-c
-%{_bindir}/protoc-gen-c
+%_libdir/libprotobuf-c.so.%sover
+%_libdir/libprotobuf-c.so.%sover.*
 
 %files devel
-%dir %{_includedir}/google
-%{_includedir}/%{name}/
-%{_includedir}/google/%{name}/
-%{_libdir}/lib%{name}.so
-%{_libdir}/pkgconfig/lib%{name}.pc
+%license LICENSE
+%dir %_includedir/protobuf-c
+%dir %_includedir/google
+%dir %_includedir/google/protobuf-c
+%_includedir/protobuf-c/*
+%_includedir/google/protobuf-c/protobuf-c.h
+%_bindir/protoc-c
+%_bindir/protoc-gen-c
+%_libdir/libprotobuf-c.so
+%_libdir/pkgconfig/libprotobuf-c.pc
 
 %changelog
