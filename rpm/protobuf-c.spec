@@ -60,19 +60,21 @@ make check
 rm %buildroot/%_libdir/*.la
 
 
-%files compiler
+%files
 %license LICENSE
-%_libdir/libprotobuf-c.so
-%_libdir/libprotobuf-c.so.*
+%doc README.md TODO
+%{_libdir}/lib%{name}.so
+%{_libdir}/lib%{name}.so.*
+
+%files compiler
+%{_bindir}/protoc-c
+%{_bindir}/protoc-gen-c
 
 %files devel
-%license LICENSE
 %dir %{_includedir}/google
 %{_includedir}/%{name}/
 %{_includedir}/google/%{name}/
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/lib%{name}.pc
-%_bindir/protoc-c
-%_bindir/protoc-gen-c
 
 %changelog
