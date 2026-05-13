@@ -56,8 +56,7 @@ make check
 
 %install
 %make_install
-
-rm %buildroot/%_libdir/*.la
+find %{buildroot} -type f -name '*.la' -delete
 
 
 %files
