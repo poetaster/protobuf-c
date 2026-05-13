@@ -70,10 +70,14 @@ find %{buildroot} -type f -name '*.la' | xargs rm -f
 %{_bindir}/protoc-gen-c
 
 %files devel
-%dir %{_includedir}/google
-%{_includedir}/%{name}/
-%{_includedir}/google/%{name}/
-%{_libdir}/lib%{name}.so
-%{_libdir}/pkgconfig/lib%{name}.pc
+%dir %_includedir/protobuf-c
+%dir %_includedir/google
+%dir %_includedir/google/protobuf-c
+%_includedir/protobuf-c/*
+%_includedir/google/protobuf-c/protobuf-c.h
+%_bindir/protoc-c
+%_bindir/protoc-gen-c
+%_libdir/libprotobuf-c.so
+%_libdir/pkgconfig/libprotobuf-c.pc
 
 %changelog
