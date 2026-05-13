@@ -56,7 +56,7 @@ make check
 
 %install
 %make_install
-find %{buildroot} -type f -name '*.la' -delete
+find %{buildroot} -type f -name '*.la' | xargs rm -f
 
 
 %files
