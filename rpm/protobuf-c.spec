@@ -7,12 +7,12 @@ URL:            https://github.com/protobuf-c/protobuf-c
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  c++_compiler
+BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  protobuf-devel >= 22
+BuildRequires:  protobuf-devel
 
 %description
 This package provides a code generator and runtime libraries to use Protocol
